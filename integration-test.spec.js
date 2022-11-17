@@ -34,7 +34,7 @@ suite(function(env) {
             await textBox.sendKeys('Charizard');
             await submitButton.click();
 
-            await sleep(1000)
+            await sleep(500)
 
             let name = await driver.findElement(By.id('pokemon-name')).getText();
             assert.equal("Charizard", name);
