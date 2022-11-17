@@ -5,7 +5,7 @@
   "type": "module",
   "main": "integration.test.js",
   "scripts": {
-    "test": "npx mocha --reporter mocha-junit-reporter --no-startup-window integration-test.spec.js"
+    "test": "npx mocha --reporter mocha-junit-reporter integration-test.spec.js"
   },
   "repository": {
     "type": "git",
