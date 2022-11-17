@@ -43,7 +43,7 @@ suite(function(env) {
         });
 
         it('Check wrong request', async function() {
-            await driver.get('http://localhost:3000');
+            await driver.get('https://tif-front-production.up.railway.app/');
 
             let textBox = await driver.findElement(By.id('pokemon-input'));
             let submitButton = await driver.findElement(By.id('submitButton'));
