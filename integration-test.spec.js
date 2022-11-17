@@ -2,6 +2,8 @@ import {By, Builder} from 'selenium-webdriver'
 import {suite} from 'selenium-webdriver/testing/index.js'
 import assert from 'assert';
 
+const FRONT_URL = process.env.FRONT_URL
+
 suite(function(env) {
     describe('First script', function() {
         let driver;
@@ -13,7 +15,7 @@ suite(function(env) {
         after(async () => await driver.quit());
 
         it('Check title', async function() {
-            await driver.get('http://localhost:3000');
+            await driver.get(FRONT_URL);
 
             let title = await driver.getTitle();
             assert.equal("My Pokedex", title);
@@ -21,7 +23,7 @@ suite(function(env) {
         });
 
         it('Check Charizard request', async function() {
-            await driver.get('http://localhost:3000');
+            await driver.get(FRONT_URL);
 
             let title = await driver.getTitle();
             assert.equal("My Pokedex", title);
@@ -43,7 +45,7 @@ suite(function(env) {
         });
 
         it('Check wrong request', async function() {
-            await driver.get('https://tif-front-production.up.railway.app/');
+            await driver.get(FRONT_URL);
 
             let textBox = await driver.findElement(By.id('pokemon-input'));
             let submitButton = await driver.findElement(By.id('submitButton'));
