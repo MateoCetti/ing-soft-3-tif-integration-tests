@@ -1,0 +1,24 @@
+{
+  "name": "integration-tests",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "integration.test.js",
+  "scripts": {
+    "test": "npx mocha integration-test.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MateoCetti/ing-soft-3-tif-integration-tests.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MateoCetti/ing-soft-3-tif-integration-tests/issues"
+  },
+  "homepage": "https://github.com/MateoCetti/ing-soft-3-tif-integration-tests#readme",
+  "dependencies": {
+    "mocha": "^10.1.0",
+    "selenium-webdriver": "^4.6.1"
+  }
+}
