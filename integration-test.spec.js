@@ -41,7 +41,6 @@ suite(function(env) {
 
             let types = await driver.findElement(By.id('pokemon-types')).getText();
             assert.equal("fire, flying", types);
-
         });
 
         it('Check wrong request', async function() {
