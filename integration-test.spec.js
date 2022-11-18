@@ -14,11 +14,22 @@ suite(function(env) {
 
         after(async () => await driver.quit());
 
-        it('Check title', async function() {
+        it('Check pokemon request by number', async function() {
             await driver.get(FRONT_URL);
 
-            let title = await driver.getTitle();
-            assert.equal("My Pokedex", title);
+            let textBox = await driver.findElement(By.id('pokemon-input'));
+            let submitButton = await driver.findElement(By.id('submitButton'));
+
+            await textBox.sendKeys('151');
+            await submitButton.click();
+
+            await sleep(500)
+
+            let name = await driver.findElement(By.id('pokemon-name')).getText();
+            assert.equal("Nombre: Mew", name);
+
+            let types = await driver.findElement(By.id('pokemon-types')).getText();
+            assert.equal("Tipo/s: psychic", types);
 
         });
 
