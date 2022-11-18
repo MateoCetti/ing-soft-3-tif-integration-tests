@@ -37,10 +37,10 @@ suite(function(env) {
             await sleep(500)
 
             let name = await driver.findElement(By.id('pokemon-name')).getText();
-            assert.equal("Charizard", name);
+            assert.equal("Nombre: Charizard", name);
 
             let types = await driver.findElement(By.id('pokemon-types')).getText();
-            assert.equal("fire, flying", types);
+            assert.equal("Tipo/s: fire, flying", types);
         });
 
         it('Check wrong request', async function() {
