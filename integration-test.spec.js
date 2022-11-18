@@ -63,7 +63,7 @@ suite(function(env) {
             await textBox.sendKeys('dasda123');
             await submitButton.click();
 
-            await sleep(1000)
+            await sleep(500)
 
             let error_msg = await driver.findElement(By.id('error-text')).getText();
             assert.equal("Error: Pokemon not found.", error_msg);
