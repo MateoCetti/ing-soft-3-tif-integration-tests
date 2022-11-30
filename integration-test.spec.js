@@ -1,4 +1,5 @@
 import { By, Builder } from "selenium-webdriver";
+import { Options } from "selenium-webdriver/chrome.js";
 import { suite } from "selenium-webdriver/testing/index.js";
 import assert from "assert";
 
@@ -7,10 +8,11 @@ const FRONT_URL = process.env.FRONT_URL;
 suite(function (env) {
   describe("First script", function () {
     let driver;
+    const options = new Options()
+    options.addArguments(["headless"])
 
     before(async function () {
-      driver = await new Builder().forBrowser("chrome").build();
-      driver.manage().setTimeouts({"implicit": 5});
+      driver = await new Builder().forBrowser("chrome").setChromeOptions(options).build();
     });
 
     after(async () => await driver.quit());
@@ -27,7 +29,7 @@ suite(function (env) {
       await textBox.sendKeys("Charizard");
       await submitButton.click();
 
-      await sleep(1000);
+      await sleep(2000);
 
       let name = await driver.findElement(By.id("pokemon-name")).getText();
       assert.equal("Nombre: Charizard", name);
@@ -45,7 +47,7 @@ suite(function (env) {
       await textBox.sendKeys(151);
       await submitButton.click();
 
-      await sleep(1000);
+      await sleep(2000);
 
       let name = await driver.findElement(By.id("pokemon-name")).getText();
       assert.equal("Nombre: Mew", name);
@@ -63,10 +65,10 @@ suite(function (env) {
       await textBox.sendKeys("dasda123");
       await submitButton.click();
 
-      await sleep(500);
+      await sleep(2000);
 
-      let error_msg = await driver.findElement(By.id("error-text")).getText();
-      assert.equal("Error: Pokemon not found.", error_msg);
+      let error_msg = await driver.findElement(By.id("pokemon-error")).getText();
+      assert.equal("Error: Pokemon no encontrado.", error_msg);
     });
   });
 });
